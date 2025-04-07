@@ -1,0 +1,29 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net8.0-windows</TargetFramework>
+    <Nullable>enable</Nullable>
+    <UseWindowsForms>true</UseWindowsForms>
+    <ImplicitUsings>enable</ImplicitUsings>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Update="Room Edit.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Room info.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Room Form.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Room Add.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Hotel Edit.cs">
+      <SubType>Form</SubType>
+    </Compile>
+  </ItemGroup>
+
+</Project>
