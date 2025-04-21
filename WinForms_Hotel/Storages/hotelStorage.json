@@ -1,0 +1,23 @@
+[
+  {
+    "Name": "Radison",
+    "Location": "Kyiv",
+    "Description": "Luxury Hotel",
+    "Stars": 5,
+    "Id": 1
+  },
+  {
+    "Name": "Hilton",
+    "Location": "Lviv",
+    "Description": "Comfortable Hotel",
+    "Stars": 4,
+    "Id": 2
+  },
+  {
+    "Name": "Premier Palace",
+    "Location": "Odesa",
+    "Description": "Elite Hotel",
+    "Stars": 5,
+    "Id": 3
+  }
+]

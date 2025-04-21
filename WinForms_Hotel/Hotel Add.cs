@@ -60,7 +60,7 @@ namespace WinForms_Hotel
             string description = txtboxDescription.Text;
             int stars = (int)selectStars.SelectedItem;
 
-            Hotel_5Star newHotel = new Hotel_5Star(name, location, description, id, stars);
+            Hotel newHotel = new Hotel(name, location, description, id, stars);
 
             hotelRepository.Add(newHotel);
 

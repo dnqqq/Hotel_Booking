@@ -8,27 +8,33 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using WinForms_Hotel.Classes;
+using WinForms_Hotel.Interfaces;
 using WinForms_Hotel.Repositories;
 
 namespace WinForms_Hotel
 {
     public partial class Room_Form : Form
     {
-        private RoomRepository<Room> roomRepository = new RoomRepository<Room>();
-        public Room_Form()
+        private bool isAdmin;
+        private IDataStorage<Room> roomStorage = new JsonStorage<Room>(@"D:\\Learning\\ОП\\Hotel_Booking\\WinForms_Hotel\\WinForms_Hotel\\Storages\\roomStorage.json");
+        private RoomRepository<Room> roomRepository;
+
+        public Room_Form(bool isAdmin)
         {
             InitializeComponent();
+            this.isAdmin = isAdmin;
 
-
-            Room room1 = new Room("Hilton", "Lux", 4, 150, true, 1);
-            Room room2 = new Room("Radison", "Standart", 2, 70, false, 2);
-
-
-            roomRepository.Add(room1);
-            roomRepository.Add(room2);
+            roomRepository = new RoomRepository<Room>(roomStorage);
 
             listAlailableRooms.DataSource = roomRepository.GetAll();
-            listAlailableRooms.DisplayMember = "TypeOfRoom"; //sdlffffffffffffffffffffffffffffffffffffff
+            listAlailableRooms.DisplayMember = "TypeOfRoom";
+
+            if (!isAdmin)
+            {
+                btnAddRoom.Hide();
+                btnRemoveRoom.Hide();
+                btnEditRoom.Hide();
+            }
         }
 
         private void btnAddRoom_Click(object sender, EventArgs e)
@@ -39,7 +45,7 @@ namespace WinForms_Hotel
             {
                 listAlailableRooms.DataSource = null;
                 listAlailableRooms.DataSource = roomRepository.GetAll();
-                listAlailableRooms.DisplayMember = "TypeOfRoom"; //fsdsdsdsdsdsdsdsdsdsdsdsdsdsdsd
+                listAlailableRooms.DisplayMember = "TypeOfRoom";
             };
 
             roomAddForm.Show();
@@ -51,11 +57,11 @@ namespace WinForms_Hotel
             {
                 Room selectedRoom = (Room)listAlailableRooms.SelectedItem;
 
-                roomRepository.Remove(selectedRoom);
+                roomRepository.Remove(selectedRoom.Id);
 
                 listAlailableRooms.DataSource = null;
                 listAlailableRooms.DataSource = roomRepository.GetAll();
-                listAlailableRooms.DisplayMember = "TypeOfRoom"; //dssssssssssssssssssssss
+                listAlailableRooms.DisplayMember = "TypeOfRoom";
             }
             else
             {
@@ -75,7 +81,7 @@ namespace WinForms_Hotel
                 {
                     listAlailableRooms.DataSource = null;
                     listAlailableRooms.DataSource = roomRepository.GetAll();
-                    listAlailableRooms.DisplayMember = "TypeOfRoom"; //fffffffffffffffffffffffff
+                    listAlailableRooms.DisplayMember = "TypeOfRoom";
                 };
 
                 roomEditForm.Show();

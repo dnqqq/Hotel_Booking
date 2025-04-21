@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace WinForms_Hotel.Classes
+namespace WinForms_Hotel.Interfaces
 {
     public interface IRepository<T>
     {

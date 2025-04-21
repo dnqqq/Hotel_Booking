@@ -8,7 +8,7 @@ namespace WinForms_Hotel.Classes
 {
     public abstract class BaseEntity
     {
-        public int Id { get; }
+        public int Id { get; set; }
         protected BaseEntity(int id)
         {
             Id = id;

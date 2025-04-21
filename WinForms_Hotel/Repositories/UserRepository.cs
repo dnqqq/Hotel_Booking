@@ -8,31 +8,30 @@ using WinForms_Hotel.Interfaces;
 
 namespace WinForms_Hotel.Repositories
 {
-    public class HotelRepository<T> : GenericRepository<T> where T : Hotel
+    public class UserRepository<T> : GenericRepository<T> where T : User
     {
-        public HotelRepository(IDataStorage<T> storage) : base(storage)
+        public UserRepository(IDataStorage<T> storage) : base(storage)
         {
         }
 
         public T GetByName(string name, IDataStorage<T> _storage)
         {
-            return _storage.GetAll().FirstOrDefault(h => h.Name.Equals(name, StringComparison.OrdinalIgnoreCase));
+            return _storage.GetAll().FirstOrDefault(u => u.Name.Equals(name, StringComparison.OrdinalIgnoreCase));
         }
 
         public List<T> GetAllSortedByName(IDataStorage<T> _storage)
         {
-            return _storage.GetAll().OrderBy(h => h.Name).ToList();
+            return _storage.GetAll().OrderBy(u => u.Name).ToList();
         }
 
         public void Update(T entity, IDataStorage<T> _storage)
         {
-            var existingHotel = _storage.GetById(entity.Id);
-            if (existingHotel != null)
+            var existingUser = _storage.GetById(entity.Id);
+            if (existingUser != null)
             {
                 _storage.Update(entity);
-                _storage.Save();
+                _storage.Save();  
             }
         }
-
     }
 }

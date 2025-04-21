@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Text.Json.Serialization;
 using System.Threading.Tasks;
 
 namespace WinForms_Hotel.Classes
@@ -18,7 +19,6 @@ namespace WinForms_Hotel.Classes
         {
             Console.WriteLine($"Тип номера: {TypeOfRoom}, Кількість гостей: {MaxGuests}, ціна: {Price}, доступність: {Availability}");
         }
-
 
         public Room(string hotelName, string typeOfRoom, int maxGuests, float price, bool availability, int id) : base(id)
         {

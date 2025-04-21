@@ -14,11 +14,13 @@ namespace WinForms_Hotel
 {
     public partial class Hotel_info : Form
     {
+        private bool isAdmin;
         private Hotel _hotel;
-        public Hotel_info(Hotel hotel)
+        public Hotel_info(Hotel hotel, bool isAdmin)
         {
             InitializeComponent();
             _hotel = hotel;
+            this.isAdmin = isAdmin;
 
             lblHotelName.Text = _hotel.Name;
             lblHotelLocation.Text = _hotel.Location;
@@ -28,9 +30,11 @@ namespace WinForms_Hotel
 
         private void btnShowRooms_Click(object sender, EventArgs e)
         {
-            Room_Form roomForm = new Room_Form();
+
+            Room_Form roomForm = new Room_Form(isAdmin);
 
             roomForm.Show();
         }
+
     }
 }

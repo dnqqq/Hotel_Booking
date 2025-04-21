@@ -1,34 +1,47 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using WinForms_Hotel.Classes;
+using WinForms_Hotel.Interfaces;
 
 namespace WinForms_Hotel.Repositories
 {
-    public class GenericRepository<T> : IRepository<T> where T : BaseEntity
+    public class GenericRepository<T> where T : BaseEntity
     {
-        protected List<T> _entities = new List<T>();
+        private readonly IDataStorage<T> _storage;
 
         public List<T> GetAll()
         {
-            return new List<T>(_entities); //ми повертаємо копію списку, для того щоб не було можливості змінити оригінальний список ззовні
+            return _storage.GetAll();
         }
 
-        public T GetById(int id)
+        public T? GetById(int id)
         {
-            return _entities.FirstOrDefault(e => e.Id == id);
+            return _storage.GetById(id);
         }
 
         public void Add(T entity)
         {
-            _entities.Add(entity);
+            _storage.Add(entity);
+            _storage.Save();  
         }
 
-        public void Remove(T entity)
+        public void Update(T entity)
         {
-            _entities.Remove(entity);
+            _storage.Update(entity);
+            _storage.Save();  
+        }
+
+        public void Remove(int id)
+        {
+            _storage.Delete(id);
+            _storage.Save();  
+        }
+
+        public GenericRepository(IDataStorage<T> storage)
+        {
+            _storage = storage;
         }
     }
+    
 }

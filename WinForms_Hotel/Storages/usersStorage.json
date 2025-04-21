@@ -1,0 +1,16 @@
+[
+  {
+    "Name": "user1",
+    "PasswordHash": "$2a$11$9o8.Oh/ygV1rktt19eNjVO55fu705A9Qw15BKdF/AyZpXhlb97OCK",
+    "Salt": "$2a$11$AD78Hwc98hu/zCItmL0D.u",
+    "Admin": false,
+    "Id": 8865
+  },
+  {
+    "Name": "admin1",
+    "PasswordHash": "$2a$11$Dpgv3OOe5RkXv.1ZMQ6eDez8TGJ.bzmbGCazGjptlNmkb6OyxFmni",
+    "Salt": "$2a$11$im.nl40wNMUj0geCTr7lH.",
+    "Admin": true,
+    "Id": 9051
+  }
+]

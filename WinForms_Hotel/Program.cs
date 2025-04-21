@@ -14,7 +14,7 @@ namespace WinForms_Hotel
             // To customize application configuration such as set high DPI settings or default font,
             // see https://aka.ms/applicationconfiguration.
             ApplicationConfiguration.Initialize();
-            Application.Run(new Hotel_Form());
+            Application.Run(new Authentication());
         }
     }
 }

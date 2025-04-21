@@ -1,0 +1,18 @@
+[
+  {
+    "HotelName": "Radison",
+    "TypeOfRoom": "Standart",
+    "MaxGuests": 2,
+    "Price": 70,
+    "Availability": false,
+    "Id": 1
+  },
+  {
+    "HotelName": "Hilton",
+    "TypeOfRoom": "Lux",
+    "MaxGuests": 4,
+    "Price": 150,
+    "Availability": true,
+    "Id": 2
+  }
+]

@@ -59,12 +59,13 @@ namespace WinForms_Hotel
             }
 
             Hotel existingHotel = hotelRepository.GetById(id);
-            if (existingHotel == null || existingHotel.Id != hotelToEdit.Id)
+            if (existingHotel != null && existingHotel.Id != hotelToEdit.Id)
             {
-                MessageBox.Show("Цей id не знайдений або вже використовуваний для іншого готелю.", "Помилка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Цей id вже використовуваний для іншого готелю.", "Помилка", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
 
+            hotelToEdit.Id = id;
             hotelToEdit.Name = txtboxHotelName.Text;
             hotelToEdit.Location = txtboxLocation.Text;
             hotelToEdit.Description = txtboxDescription.Text;
@@ -76,5 +77,6 @@ namespace WinForms_Hotel
 
             this.Close();
         }
+
     }
 }

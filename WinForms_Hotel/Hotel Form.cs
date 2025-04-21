@@ -8,30 +8,35 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using WinForms_Hotel.Classes;
+using WinForms_Hotel.Interfaces;
 using WinForms_Hotel.Repositories;
 
 namespace WinForms_Hotel
 {
     public partial class Hotel_Form : Form
     {
-        private HotelRepository<Hotel> hotelRepository = new HotelRepository<Hotel>();
-        public Hotel_Form()
+        private bool isAdmin;
+        private IDataStorage<Hotel> hotelStorage = new JsonStorage<Hotel>(@"D:\Learning\ОП\Hotel_Booking\WinForms_Hotel\WinForms_Hotel\Storages\hotelStorage.json");
+        private HotelRepository<Hotel> hotelRepository;
+
+        public Hotel_Form(bool isAdmin)
         {
             InitializeComponent();
+            this.isAdmin = isAdmin;
 
-
-            Hotel_5Star hotel1 = new Hotel_5Star("Radison", "Kyiv", "Luxury Hotel", 1);
-            Hotel_5Star hotel2 = new Hotel_5Star("Hilton", "Lviv", "Comfortable Hotel", 2);
-            Hotel_5Star hotel3 = new Hotel_5Star("Premier Palace", "Odesa", "Elite Hotel", 3);
-
-
-            hotelRepository.Add(hotel1);
-            hotelRepository.Add(hotel2);
-            hotelRepository.Add(hotel3);
+            hotelRepository = new HotelRepository<Hotel>(hotelStorage);
 
             listAlailableHotels.DataSource = hotelRepository.GetAll();
             listAlailableHotels.DisplayMember = "Name";
+
+            if (!isAdmin)
+            {
+                btnAddHotel.Hide();
+                btnRemoveHotel.Hide();
+                btnEditHotel.Hide();
+            }
         }
+
 
         private void btnAddHotel_Click(object sender, EventArgs e)
         {
@@ -53,7 +58,7 @@ namespace WinForms_Hotel
             {
                 Hotel selectedHotel = (Hotel)listAlailableHotels.SelectedItem;
 
-                hotelRepository.Remove(selectedHotel);
+                hotelRepository.Remove(selectedHotel.Id);
 
                 listAlailableHotels.DataSource = null;
                 listAlailableHotels.DataSource = hotelRepository.GetAll();
@@ -94,7 +99,7 @@ namespace WinForms_Hotel
             {
                 Hotel selectedHotel = (Hotel)listAlailableHotels.SelectedItem;
 
-                Hotel_info hotelInfoForm = new Hotel_info(selectedHotel);
+                Hotel_info hotelInfoForm = new Hotel_info(selectedHotel, isAdmin);
 
                 hotelInfoForm.Show();
             }
