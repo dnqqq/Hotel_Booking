@@ -33,13 +33,18 @@
             lblMaxGuests = new Label();
             btnBook = new Button();
             lblHotelName = new Label();
+            btnProfile = new Button();
+            dateIn = new DateTimePicker();
+            dateOut = new DateTimePicker();
+            lblDateIn = new Label();
+            lblDateOut = new Label();
             SuspendLayout();
             // 
             // lblTypeOfRoom
             // 
             lblTypeOfRoom.AutoSize = true;
             lblTypeOfRoom.Font = new Font("Segoe UI", 16F);
-            lblTypeOfRoom.Location = new Point(136, 29);
+            lblTypeOfRoom.Location = new Point(47, 35);
             lblTypeOfRoom.Name = "lblTypeOfRoom";
             lblTypeOfRoom.Size = new Size(191, 37);
             lblTypeOfRoom.TabIndex = 0;
@@ -68,7 +73,7 @@
             // btnBook
             // 
             btnBook.Font = new Font("Segoe UI", 12F);
-            btnBook.Location = new Point(98, 291);
+            btnBook.Location = new Point(105, 384);
             btnBook.Margin = new Padding(3, 4, 3, 4);
             btnBook.Name = "btnBook";
             btnBook.Size = new Size(229, 51);
@@ -87,11 +92,63 @@
             lblHotelName.TabIndex = 9;
             lblHotelName.Text = "Hotel Name: ";
             // 
+            // btnProfile
+            // 
+            btnProfile.Font = new Font("Segoe UI", 12F);
+            btnProfile.Location = new Point(280, 12);
+            btnProfile.Name = "btnProfile";
+            btnProfile.Size = new Size(128, 36);
+            btnProfile.TabIndex = 10;
+            btnProfile.Text = "User Profile";
+            btnProfile.UseVisualStyleBackColor = true;
+            btnProfile.Click += btnProfile_Click;
+            // 
+            // dateIn
+            // 
+            dateIn.Font = new Font("Segoe UI", 12F);
+            dateIn.Location = new Point(152, 251);
+            dateIn.Name = "dateIn";
+            dateIn.Size = new Size(256, 34);
+            dateIn.TabIndex = 11;
+            // 
+            // dateOut
+            // 
+            dateOut.Font = new Font("Segoe UI", 12F);
+            dateOut.Location = new Point(152, 309);
+            dateOut.Name = "dateOut";
+            dateOut.Size = new Size(256, 34);
+            dateOut.TabIndex = 12;
+            // 
+            // lblDateIn
+            // 
+            lblDateIn.AutoSize = true;
+            lblDateIn.Font = new Font("Segoe UI", 12F);
+            lblDateIn.Location = new Point(47, 251);
+            lblDateIn.Name = "lblDateIn";
+            lblDateIn.Size = new Size(78, 28);
+            lblDateIn.TabIndex = 13;
+            lblDateIn.Text = "Date In:";
+            // 
+            // lblDateOut
+            // 
+            lblDateOut.AutoSize = true;
+            lblDateOut.Font = new Font("Segoe UI", 12F);
+            lblDateOut.Location = new Point(47, 309);
+            lblDateOut.Name = "lblDateOut";
+            lblDateOut.Size = new Size(95, 28);
+            lblDateOut.TabIndex = 14;
+            lblDateOut.Text = "Date Out:";
+            // 
             // Room_info
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(420, 415);
+            ClientSize = new Size(453, 459);
+            Controls.Add(lblDateOut);
+            Controls.Add(lblDateIn);
+            Controls.Add(dateOut);
+            Controls.Add(dateIn);
+            Controls.Add(btnProfile);
             Controls.Add(lblHotelName);
             Controls.Add(btnBook);
             Controls.Add(lblMaxGuests);
@@ -99,7 +156,7 @@
             Controls.Add(lblTypeOfRoom);
             Margin = new Padding(3, 4, 3, 4);
             Name = "Room_info";
-            Text = "Hotel_info";
+            Text = "Room_info";
             ResumeLayout(false);
             PerformLayout();
         }
@@ -111,5 +168,10 @@
         private Label lblMaxGuests;
         private Label lblHotelName;
         private Button btnBook;
+        private Button btnProfile;
+        private DateTimePicker dateIn;
+        private DateTimePicker dateOut;
+        private Label lblDateIn;
+        private Label lblDateOut;
     }
 }

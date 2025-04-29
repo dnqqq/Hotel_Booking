@@ -28,7 +28,7 @@ namespace WinForms_Hotel
             {
                 MessageBox.Show("”сп≥шна авторизац≥€!", "”сп≥х", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
-                Hotel_Form hotelForm = new Hotel_Form(user.Admin);
+                Hotel_Form hotelForm = new Hotel_Form(user);
                 hotelForm.Show();
 
                 this.Hide();
@@ -63,7 +63,7 @@ namespace WinForms_Hotel
 
             MessageBox.Show("–еЇстрац≥€ усп≥шна!", "”сп≥х", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
-            Hotel_Form hotelForm = new Hotel_Form(isAdmin);
+            Hotel_Form hotelForm = new Hotel_Form(newUser);
             hotelForm.Show();
 
             this.Hide();

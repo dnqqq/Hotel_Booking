@@ -36,6 +36,7 @@
             btnEditHotel = new Button();
             lblHotelName = new Label();
             btnSearch = new Button();
+            btnProfile = new Button();
             SuspendLayout();
             // 
             // txtboxHotelName
@@ -123,11 +124,23 @@
             btnSearch.UseVisualStyleBackColor = true;
             btnSearch.Click += btnSearch_Click;
             // 
+            // btnProfile
+            // 
+            btnProfile.Font = new Font("Segoe UI", 12F);
+            btnProfile.Location = new Point(787, 12);
+            btnProfile.Name = "btnProfile";
+            btnProfile.Size = new Size(128, 36);
+            btnProfile.TabIndex = 8;
+            btnProfile.Text = "User Profile";
+            btnProfile.UseVisualStyleBackColor = true;
+            btnProfile.Click += btnProfile_Click;
+            // 
             // Hotel_Form
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(914, 600);
+            ClientSize = new Size(927, 401);
+            Controls.Add(btnProfile);
             Controls.Add(btnSearch);
             Controls.Add(lblHotelName);
             Controls.Add(btnEditHotel);
@@ -153,5 +166,6 @@
         private Button btnRemoveHotel;
         private Button btnEditHotel;
         private Button btnSearch;
+        private Button btnProfile;
     }
 }

@@ -15,21 +15,21 @@ namespace WinForms_Hotel
 {
     public partial class Hotel_Form : Form
     {
-        private bool isAdmin;
+        private User user;
         private IDataStorage<Hotel> hotelStorage = new JsonStorage<Hotel>(@"D:\Learning\ОП\Hotel_Booking\WinForms_Hotel\WinForms_Hotel\Storages\hotelStorage.json");
         private HotelRepository<Hotel> hotelRepository;
 
-        public Hotel_Form(bool isAdmin)
+        public Hotel_Form(User user)
         {
             InitializeComponent();
-            this.isAdmin = isAdmin;
+            this.user = user;
 
             hotelRepository = new HotelRepository<Hotel>(hotelStorage);
 
             listAlailableHotels.DataSource = hotelRepository.GetAll();
             listAlailableHotels.DisplayMember = "Name";
 
-            if (!isAdmin)
+            if (!user.Admin)
             {
                 btnAddHotel.Hide();
                 btnRemoveHotel.Hide();
@@ -99,7 +99,7 @@ namespace WinForms_Hotel
             {
                 Hotel selectedHotel = (Hotel)listAlailableHotels.SelectedItem;
 
-                Hotel_info hotelInfoForm = new Hotel_info(selectedHotel, isAdmin);
+                Hotel_info hotelInfoForm = new Hotel_info(selectedHotel, user);
 
                 hotelInfoForm.Show();
             }
@@ -124,6 +124,12 @@ namespace WinForms_Hotel
             {
                 MessageBox.Show("Готель не знайдено.");
             }
+        }
+
+        private void btnProfile_Click(object sender, EventArgs e)
+        {
+            User_Profile userProfile = new User_Profile(user);
+            userProfile.Show();
         }
     }
 }

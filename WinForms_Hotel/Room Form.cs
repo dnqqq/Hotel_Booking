@@ -15,21 +15,29 @@ namespace WinForms_Hotel
 {
     public partial class Room_Form : Form
     {
-        private bool isAdmin;
+        private User user;
+        private Hotel hotel;
         private IDataStorage<Room> roomStorage = new JsonStorage<Room>(@"D:\\Learning\\ОП\\Hotel_Booking\\WinForms_Hotel\\WinForms_Hotel\\Storages\\roomStorage.json");
         private RoomRepository<Room> roomRepository;
 
-        public Room_Form(bool isAdmin)
+        public Room_Form(User user, Hotel hotel)
         {
             InitializeComponent();
-            this.isAdmin = isAdmin;
+            this.user = user;
+            this.hotel = hotel;
 
             roomRepository = new RoomRepository<Room>(roomStorage);
+            
+            lblHotel.Text = hotel.Name;
 
-            listAlailableRooms.DataSource = roomRepository.GetAll();
+            // Фільтрація кімнат за готелем
+            var hotelRooms = roomRepository.GetAll().Where(r => r.HotelName == hotel.Name).ToList();
+
+            listAlailableRooms.DataSource = hotelRooms;
             listAlailableRooms.DisplayMember = "TypeOfRoom";
+            listAlailableRooms.ValueMember = "Id";
 
-            if (!isAdmin)
+            if (!user.Admin)
             {
                 btnAddRoom.Hide();
                 btnRemoveRoom.Hide();
@@ -98,10 +106,16 @@ namespace WinForms_Hotel
             {
                 Room selectedRoom = (Room)listAlailableRooms.SelectedItem;
 
-                Room_info roomInfoForm = new Room_info(selectedRoom);
+                Room_info roomInfoForm = new Room_info(selectedRoom, user);
 
                 roomInfoForm.Show();
             }
+        }
+
+        private void btnProfile_Click(object sender, EventArgs e)
+        {
+            User_Profile userProfile = new User_Profile(user);
+            userProfile.Show();
         }
     }
 }

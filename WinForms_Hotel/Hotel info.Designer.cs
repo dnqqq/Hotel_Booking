@@ -33,6 +33,7 @@
             lblHotelLocation = new Label();
             btnShowRooms = new Button();
             lblHotelStars = new Label();
+            btnProfile = new Button();
             SuspendLayout();
             // 
             // lblHotelName
@@ -87,11 +88,23 @@
             lblHotelStars.TabIndex = 9;
             lblHotelStars.Text = "stars";
             // 
+            // btnProfile
+            // 
+            btnProfile.Font = new Font("Segoe UI", 12F);
+            btnProfile.Location = new Point(326, 12);
+            btnProfile.Name = "btnProfile";
+            btnProfile.Size = new Size(128, 36);
+            btnProfile.TabIndex = 10;
+            btnProfile.Text = "User Profile";
+            btnProfile.UseVisualStyleBackColor = true;
+            btnProfile.Click += btnProfile_Click;
+            // 
             // Hotel_info
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(420, 415);
+            ClientSize = new Size(466, 415);
+            Controls.Add(btnProfile);
             Controls.Add(lblHotelStars);
             Controls.Add(btnShowRooms);
             Controls.Add(lblHotelLocation);
@@ -111,5 +124,6 @@
         private Label lblHotelLocation;
         private Label lblHotelStars;
         private Button btnShowRooms;
+        private Button btnProfile;
     }
 }

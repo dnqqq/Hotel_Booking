@@ -7,10 +7,10 @@ using WinForms_Hotel.Interfaces;
 
 namespace WinForms_Hotel.Classes
 {
-    class Booking : BaseEntity, IBooking
+    public class Booking : BaseEntity, IBooking
     {
         public Hotel Hotel { get; set; }
-        public IUser User { get; set; }
+        public User User { get; set; }
         public Room Room { get; set; }
         public string DateIn { get; set; }
         public string DateOut { get; set; }
@@ -27,7 +27,7 @@ namespace WinForms_Hotel.Classes
             Console.WriteLine("Бронювання скасоване");
         }
 
-        public Booking(Hotel hotel, IUser user, Room room, string dateIn, string dateOut, string status, int id) : base(id)
+        public Booking(Hotel hotel, User user, Room room, string dateIn, string dateOut, string status, int id) : base(id)
         {
             Hotel = hotel;
             User = user;
