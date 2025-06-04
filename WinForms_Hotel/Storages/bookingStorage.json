@@ -64,34 +64,6 @@
       "Id": 1
     },
     "User": {
-      "Name": "user1",
-      "PasswordHash": "$2a$11$9o8.Oh/ygV1rktt19eNjVO55fu705A9Qw15BKdF/AyZpXhlb97OCK",
-      "Salt": "$2a$11$AD78Hwc98hu/zCItmL0D.u",
-      "Admin": false,
-      "Id": 8865
-    },
-    "Room": {
-      "HotelName": "Radison",
-      "TypeOfRoom": "Standart",
-      "MaxGuests": 2,
-      "Price": 70,
-      "Availability": false,
-      "Id": 1
-    },
-    "DateIn": "2025-04-30",
-    "DateOut": "2025-05-04",
-    "Status": "booked",
-    "Id": 639
-  },
-  {
-    "Hotel": {
-      "Name": "Radison",
-      "Location": "Kyiv",
-      "Description": "Luxury Hotel",
-      "Stars": 5,
-      "Id": 1
-    },
-    "User": {
       "Name": "user2",
       "PasswordHash": "$2a$11$gNkT1CXafPST17mloVvVk.bPs5MBqoASOYjVkO1ySOYMAjLn.MyIG",
       "Salt": "$2a$11$q5gHsdjvCCJylXyca/TPGu",
@@ -110,5 +82,33 @@
     "DateOut": "2025-05-10",
     "Status": "booked",
     "Id": 779
+  },
+  {
+    "Hotel": {
+      "Name": "Radison",
+      "Location": "Kyiv",
+      "Description": "Luxury Hotel",
+      "Stars": 5,
+      "Id": 1
+    },
+    "User": {
+      "Name": "user1",
+      "PasswordHash": "$2a$11$9o8.Oh/ygV1rktt19eNjVO55fu705A9Qw15BKdF/AyZpXhlb97OCK",
+      "Salt": "$2a$11$AD78Hwc98hu/zCItmL0D.u",
+      "Admin": false,
+      "Id": 8865
+    },
+    "Room": {
+      "HotelName": "Radison",
+      "TypeOfRoom": "Standart",
+      "MaxGuests": 2,
+      "Price": 70,
+      "Availability": false,
+      "Id": 1
+    },
+    "DateIn": "2025-05-21",
+    "DateOut": "2025-05-22",
+    "Status": "booked",
+    "Id": 764
   }
 ]

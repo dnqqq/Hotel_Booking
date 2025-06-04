@@ -58,7 +58,8 @@ namespace WinForms_Hotel
                 if (isRoomAvailable)
                 {
                     // Пошук готелю за його ім'ям
-                    var hotelRepository = new HotelRepository<Hotel>(new JsonStorage<Hotel>(@"D:\\Learning\\ОП\\Hotel_Booking\\WinForms_Hotel\\WinForms_Hotel\\Storages\\hotelStorage.json"));
+                    //var hotelRepository = new HotelRepository<Hotel>(new JsonStorage<Hotel>(@"D:\\Learning\\ОП\\Hotel_Booking\\WinForms_Hotel\\WinForms_Hotel\\Storages\\hotelStorage.json"));
+                    var hotelRepository = new HotelRepository<Hotel>(new MongoStorage<Hotel>("mongodb://localhost:27017", "HotelDB", "Hotels"));
                     Hotel hotel = hotelRepository.GetAll().FirstOrDefault(h => h.Name == _room.HotelName);
 
                     // Якщо готель знайдений
@@ -74,7 +75,17 @@ namespace WinForms_Hotel
                             new Random().Next(1, 1000)  // Генерація випадкового ID
                         );
 
-                        var bookingRepository = new BookingRepository<Booking>(new JsonStorage<Booking>(@"D:\\Learning\\ОП\\Hotel_Booking\\WinForms_Hotel\\WinForms_Hotel\\Storages\\bookingStorage.json"));
+                        //var bookingRepository = new BookingRepository<Booking>(new JsonStorage<Booking>(@"D:\\Learning\\ОП\\Hotel_Booking\\WinForms_Hotel\\WinForms_Hotel\\Storages\\bookingStorage.json"));
+                        var bookingRepository = new BookingRepository<Booking>(new MongoStorage<Booking>("mongodb://localhost:27017", "HotelDB", "Bookings"));
+
+                        var validationResults = ValidationService.Validate(newBooking);
+                        if (validationResults.Any())
+                        {
+                            string errors = string.Join("\n", validationResults.Select(r => r.ErrorMessage));
+                            MessageBox.Show(errors, "Помилка валідації", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            return;
+                        }
+
                         bookingRepository.Add(newBooking);
 
                         MessageBox.Show("Бронювання успішно створено!");
@@ -101,7 +112,8 @@ namespace WinForms_Hotel
         private List<Booking> GetAllBookingsForRoom(Room room)
         {
             // Отримуємо всі бронювання з репозиторію
-            var bookingRepository = new BookingRepository<Booking>(new JsonStorage<Booking>(@"D:\\Learning\\ОП\\Hotel_Booking\\WinForms_Hotel\\WinForms_Hotel\\Storages\\bookingStorage.json"));
+            //var bookingRepository = new BookingRepository<Booking>(new JsonStorage<Booking>(@"D:\\Learning\\ОП\\Hotel_Booking\\WinForms_Hotel\\WinForms_Hotel\\Storages\\bookingStorage.json"));
+            var bookingRepository = new BookingRepository<Booking>(new MongoStorage<Booking>("mongodb://localhost:27017", "HotelDB", "Bookings"));
             return bookingRepository.GetAll().Where(b => b.Room.Id == room.Id).ToList();
         }
 

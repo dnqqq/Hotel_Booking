@@ -3,6 +3,7 @@ using System.Windows.Forms;
 using WinForms_Hotel.Classes;
 using WinForms_Hotel.Repositories;
 using System.Collections.Generic;
+using WinForms_Hotel.Interfaces;
 
 namespace WinForms_Hotel
 {
@@ -13,8 +14,9 @@ namespace WinForms_Hotel
         public Authentication()
         {
             InitializeComponent();
-            var storage = new JsonStorage<User>(@"D:\Learning\ОП\Hotel_Booking\WinForms_Hotel\WinForms_Hotel\Storages\usersStorage.json");
-            userRepository = new UserRepository<User>(storage);
+            //var storage = new JsonStorage<User>(@"D:\Learning\ОП\Hotel_Booking\WinForms_Hotel\WinForms_Hotel\Storages\usersStorage.json");
+            var storage = new MongoStorage<User>("mongodb://localhost:27017", "HotelDB", "Users");
+        userRepository = new UserRepository<User>(storage);
         }
 
         private void btnSignIn_Click(object sender, EventArgs e)
@@ -59,6 +61,14 @@ namespace WinForms_Hotel
 
             bool isAdmin = false; 
             User newUser = new User(name, passwordHash, salt, id, isAdmin);
+
+            var validationResults = ValidationService.Validate(newUser);
+            if (validationResults.Any())
+            {
+                MessageBox.Show(string.Join("\n", validationResults.Select(r => r.ErrorMessage)), "Помилки валідації", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
             userRepository.Add(newUser);
 
             MessageBox.Show("Реєстрація успішна!", "Успіх", MessageBoxButtons.OK, MessageBoxIcon.Information);

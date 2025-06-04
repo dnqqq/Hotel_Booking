@@ -60,11 +60,15 @@ namespace WinForms_Hotel
             roomToEdit.MaxGuests = int.Parse(txtboxMaxGuests.Text);
             roomToEdit.Price = float.Parse(txtboxPrice.Text);
 
+            var validationResults = ValidationService.Validate(roomToEdit);
+            if (validationResults.Any())
+            {
+                string errors = string.Join("\n", validationResults.Select(r => r.ErrorMessage));
+                MessageBox.Show(errors, "Помилка валідації", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
             roomRepository.Update(roomToEdit);
-
-            MessageBox.Show("Номер успішно оновлено!", "Успіх", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
-            this.Close();
         }
     }
 }

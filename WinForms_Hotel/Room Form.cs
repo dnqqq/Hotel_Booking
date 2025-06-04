@@ -17,7 +17,8 @@ namespace WinForms_Hotel
     {
         private User user;
         private Hotel hotel;
-        private IDataStorage<Room> roomStorage = new JsonStorage<Room>(@"D:\\Learning\\ОП\\Hotel_Booking\\WinForms_Hotel\\WinForms_Hotel\\Storages\\roomStorage.json");
+        //private IDataStorage<Room> roomStorage = new JsonStorage<Room>(@"D:\\Learning\\ОП\\Hotel_Booking\\WinForms_Hotel\\WinForms_Hotel\\Storages\\roomStorage.json");
+        private IDataStorage<Room> roomStorage = new MongoStorage<Room>("mongodb://localhost:27017", "HotelDB", "Rooms");
         private RoomRepository<Room> roomRepository;
 
         public Room_Form(User user, Hotel hotel)
