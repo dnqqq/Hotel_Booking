@@ -1,0 +1,22 @@
+[{
+  "_id": {
+    "$oid": "683df6c1657a7c042ac02518"
+  },
+  "HotelName": "Radison",
+  "TypeOfRoom": "Standart",
+  "MaxGuests": 2,
+  "Price": 70,
+  "Availability": false,
+  "Id": 1
+},
+{
+  "_id": {
+    "$oid": "683df6c1657a7c042ac02519"
+  },
+  "HotelName": "Hilton",
+  "TypeOfRoom": "Lux",
+  "MaxGuests": 4,
+  "Price": 150,
+  "Availability": true,
+  "Id": 2
+}]
