@@ -33,12 +33,14 @@
             listAlailableRooms = new ListBox();
             btnRemoveRoom = new Button();
             btnEditRoom = new Button();
+            btnProfile = new Button();
+            lblHotel = new Label();
             SuspendLayout();
             // 
             // btnAddRoom
             // 
             btnAddRoom.Font = new Font("Segoe UI", 12F);
-            btnAddRoom.Location = new Point(398, 87);
+            btnAddRoom.Location = new Point(369, 118);
             btnAddRoom.Margin = new Padding(3, 4, 3, 4);
             btnAddRoom.Name = "btnAddRoom";
             btnAddRoom.Size = new Size(145, 40);
@@ -50,17 +52,17 @@
             // lblAvailableRooms
             // 
             lblAvailableRooms.AutoSize = true;
-            lblAvailableRooms.Font = new Font("Segoe UI", 16F);
-            lblAvailableRooms.Location = new Point(37, 43);
+            lblAvailableRooms.Font = new Font("Segoe UI", 13F);
+            lblAvailableRooms.Location = new Point(37, 75);
             lblAvailableRooms.Name = "lblAvailableRooms";
-            lblAvailableRooms.Size = new Size(213, 37);
+            lblAvailableRooms.Size = new Size(172, 30);
             lblAvailableRooms.TabIndex = 2;
             lblAvailableRooms.Text = "Available Rooms";
             // 
             // listAlailableRooms
             // 
             listAlailableRooms.FormattingEnabled = true;
-            listAlailableRooms.Location = new Point(37, 87);
+            listAlailableRooms.Location = new Point(37, 118);
             listAlailableRooms.Margin = new Padding(3, 4, 3, 4);
             listAlailableRooms.Name = "listAlailableRooms";
             listAlailableRooms.Size = new Size(237, 244);
@@ -70,7 +72,7 @@
             // btnRemoveRoom
             // 
             btnRemoveRoom.Font = new Font("Segoe UI", 12F);
-            btnRemoveRoom.Location = new Point(398, 148);
+            btnRemoveRoom.Location = new Point(369, 183);
             btnRemoveRoom.Margin = new Padding(3, 4, 3, 4);
             btnRemoveRoom.Name = "btnRemoveRoom";
             btnRemoveRoom.Size = new Size(145, 40);
@@ -82,7 +84,7 @@
             // btnEditRoom
             // 
             btnEditRoom.Font = new Font("Segoe UI", 12F);
-            btnEditRoom.Location = new Point(398, 208);
+            btnEditRoom.Location = new Point(369, 250);
             btnEditRoom.Margin = new Padding(3, 4, 3, 4);
             btnEditRoom.Name = "btnEditRoom";
             btnEditRoom.Size = new Size(145, 37);
@@ -91,11 +93,34 @@
             btnEditRoom.UseVisualStyleBackColor = true;
             btnEditRoom.Click += btnEditRoom_Click;
             // 
+            // btnProfile
+            // 
+            btnProfile.Font = new Font("Segoe UI", 12F);
+            btnProfile.Location = new Point(648, 12);
+            btnProfile.Name = "btnProfile";
+            btnProfile.Size = new Size(128, 36);
+            btnProfile.TabIndex = 9;
+            btnProfile.Text = "User Profile";
+            btnProfile.UseVisualStyleBackColor = true;
+            btnProfile.Click += btnProfile_Click;
+            // 
+            // lblHotel
+            // 
+            lblHotel.AutoSize = true;
+            lblHotel.Font = new Font("Segoe UI", 16F);
+            lblHotel.Location = new Point(37, 12);
+            lblHotel.Name = "lblHotel";
+            lblHotel.Size = new Size(82, 37);
+            lblHotel.TabIndex = 10;
+            lblHotel.Text = "Hotel";
+            // 
             // Room_Form
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(914, 600);
+            ClientSize = new Size(788, 408);
+            Controls.Add(lblHotel);
+            Controls.Add(btnProfile);
             Controls.Add(btnEditRoom);
             Controls.Add(btnRemoveRoom);
             Controls.Add(listAlailableRooms);
@@ -114,5 +139,7 @@
         private Button btnAddRoom;
         private Button btnRemoveRoom;
         private Button btnEditRoom;
+        private Button btnProfile;
+        private Label lblHotel;
     }
 }

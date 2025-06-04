@@ -4,12 +4,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace WinForms_Hotel.Interfaces
-{
-    interface IUser
-    {
-        public string Name { get; set; }
-        public string Email { get; set; }
-        public bool Admin { get; set; }
-    }
-}
+//namespace WinForms_Hotel.Interfaces
+//{
+//    interface IUser
+//    {
+//        public string Name { get; set; }
+//        public string Email { get; set; }
+//        public bool Admin { get; set; }
+//    }
+//}

@@ -24,22 +24,12 @@ namespace WinForms_Hotel
 
         private void InitializeStarsComboBox()
         {
-            selectStars.Items.Add(1);
-            selectStars.Items.Add(2);
-            selectStars.Items.Add(3);
-            selectStars.Items.Add(4);
-            selectStars.Items.Add(5);
+            selectStars.Items.AddRange(new object[] { 1, 2, 3, 4, 5 });
             selectStars.SelectedIndex = 4;
         }
 
         private void btnAddHotel_Click(object sender, EventArgs e)
         {
-            if (string.IsNullOrEmpty(txtboxHotelName.Text) || string.IsNullOrEmpty(txtboxLocation.Text) || string.IsNullOrEmpty(txtboxDescription.Text) || string.IsNullOrEmpty(txtboxID.Text))
-            {
-                MessageBox.Show("Будь ласка, заповніть усі поля.", "Помилка", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
-            }
-
             if (!int.TryParse(txtboxID.Text, out int id))
             {
                 MessageBox.Show("Введіть правильний id (число).", "Помилка", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -55,17 +45,23 @@ namespace WinForms_Hotel
                 }
             }
 
-            string name = txtboxHotelName.Text;
-            string location = txtboxLocation.Text;
-            string description = txtboxDescription.Text;
-            int stars = (int)selectStars.SelectedItem;
+            Hotel newHotel = new Hotel(
+                txtboxHotelName.Text,
+                txtboxLocation.Text,
+                txtboxDescription.Text,
+                id,
+                (int)selectStars.SelectedItem
+            );
 
-            Hotel newHotel = new Hotel(name, location, description, id, stars);
+            var validationResults = ValidationService.Validate(newHotel);
+            if (validationResults.Any())
+            {
+                MessageBox.Show(string.Join("\n", validationResults.Select(r => r.ErrorMessage)), "Помилки валідації", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
 
             hotelRepository.Add(newHotel);
-
             MessageBox.Show("Готель успішно додано!", "Успіх", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
             this.Close();
         }
     }

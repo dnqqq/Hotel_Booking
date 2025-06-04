@@ -64,9 +64,15 @@ namespace WinForms_Hotel
 
             roomRepository.Add(newRoom);
 
-            MessageBox.Show("Готель успішно додано!", "Успіх", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            var validationResults = ValidationService.Validate(newRoom);
+            if (validationResults.Any())
+            {
+                string errors = string.Join("\n", validationResults.Select(r => r.ErrorMessage));
+                MessageBox.Show(errors, "Помилка валідації", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
 
-            this.Close();
+            roomRepository.Add(newRoom);
         }
     }
 }

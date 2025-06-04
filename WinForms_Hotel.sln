@@ -1,9 +1,11 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
-VisualStudioVersion = 17.13.35825.156 d17.13
+VisualStudioVersion = 17.13.35825.156
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WinForms_Hotel", "WinForms_Hotel\WinForms_Hotel.csproj", "{12A47D82-C01C-4059-A6C2-006836D42972}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UnitTests", "UnitTests\UnitTests.csproj", "{9FBBC8FC-AB0E-4E43-BBB7-6DB509D57839}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +17,10 @@ Global
 		{12A47D82-C01C-4059-A6C2-006836D42972}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{12A47D82-C01C-4059-A6C2-006836D42972}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{12A47D82-C01C-4059-A6C2-006836D42972}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9FBBC8FC-AB0E-4E43-BBB7-6DB509D57839}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9FBBC8FC-AB0E-4E43-BBB7-6DB509D57839}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9FBBC8FC-AB0E-4E43-BBB7-6DB509D57839}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9FBBC8FC-AB0E-4E43-BBB7-6DB509D57839}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

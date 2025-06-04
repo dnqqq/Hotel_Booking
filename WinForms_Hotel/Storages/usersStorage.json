@@ -12,5 +12,12 @@
     "Salt": "$2a$11$im.nl40wNMUj0geCTr7lH.",
     "Admin": true,
     "Id": 9051
+  },
+  {
+    "Name": "user2",
+    "PasswordHash": "$2a$11$gNkT1CXafPST17mloVvVk.bPs5MBqoASOYjVkO1ySOYMAjLn.MyIG",
+    "Salt": "$2a$11$q5gHsdjvCCJylXyca/TPGu",
+    "Admin": false,
+    "Id": 3277
   }
 ]
