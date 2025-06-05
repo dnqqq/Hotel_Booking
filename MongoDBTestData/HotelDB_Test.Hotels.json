@@ -1,0 +1,20 @@
+[{
+  "_id": {
+    "$oid": "6841cb4cfd21748321a66a4e"
+  },
+  "Id": 2,
+  "Name": "New Name",
+  "Location": "City",
+  "Description": "Good Hotel",
+  "Stars": 5
+},
+{
+  "_id": {
+    "$oid": "6841cb4cfd21748321a66a4f"
+  },
+  "Id": 1,
+  "Name": "Test Hotel",
+  "Location": null,
+  "Description": null,
+  "Stars": 0
+}]
