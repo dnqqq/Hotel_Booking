@@ -8,7 +8,7 @@
 
   
 ## 1. Клонуйте репозиторій у Visual Studio:
-https://github.com/ (ваш логін) /Hotel_Booking.git
+https://github.com/ваш логін/Hotel_Booking.git
 
 ## 2. Відновіть залежності (Nu-Get пакети):
 dotnet restore
